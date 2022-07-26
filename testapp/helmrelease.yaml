@@ -11,7 +11,16 @@ spec:
       version: 0.1.0
       sourceRef:
         kind: HelmRepository
-        name: chartmuseum
+        name: test
         namespace: default
       interval: 1m
   timeout: 5m
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: test
+  namespace: default
+spec:
+  url: http://chartmuseum.flux-system.svc.cluster.local:8080
+  interval: 10m
